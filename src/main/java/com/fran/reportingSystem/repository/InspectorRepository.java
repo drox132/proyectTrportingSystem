@@ -5,11 +5,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.parameters.P;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Date;
 import java.util.List;
-
+@Repository
 public interface InspectorRepository extends JpaRepository<Inspector,Integer> {
 
     @Query(value = "SELECT * FROM inspector", nativeQuery = true)
@@ -18,15 +19,14 @@ public interface InspectorRepository extends JpaRepository<Inspector,Integer> {
     @Query(value = "SELECT * FROM inspector WHERE id= :idUser", nativeQuery = true)
     Inspector selectAllInspectById(@Param("idUser") long id);
 
-    @Query(value = "EXECPROCEDURE", nativeQuery = true)
-    Inspector insertInspector (String name, Date startDate, String phone, String email);
+    @Query(value = "exec createInspector @Name = :nameuser, @StartDate= :startdateuser, @Phone = :phoneuser, @Email= :emailuser ", nativeQuery = true)
+    Inspector insertInspector (@Param("nameuser") String name, @Param("startdateuser") Date startDate, @Param("phoneuser") String phone, @Param("emailuser") String email);
 
-    @Query(value = "EXECPROCEDURE", nativeQuery = true)
-    Inspector updateInspectorById(long id,String name, Date startDate, String phone, String email);
+    @Query(value = "updateInspectorById @Id= :iduser , @Name= :nameuser , @StartDate= :startdateuser , @Phone= :phoneuser , @Email= :emailuser ", nativeQuery = true)
+    Inspector updateInspectorById(@Param("iduser") long id, @Param("nameuser") String name, @Param("startdateuser") Date startDate, @Param("phoneuser") String phone, @Param("emailuser") String email);
 
-    @Query(value = "DELETE * FROM inspector WHERE id= :idusuario", nativeQuery = true)
+    @Query(value = "DELETE FROM inspector WHERE id= :idusuario", nativeQuery = true)
     void deleteInspectorById(@Param("idusuario") long id);
-
 
 
 }

@@ -16,10 +16,10 @@ public interface BankRepository extends JpaRepository<Bank,Integer> {
     @Query(value = "SELECT * FROM bank WHERE id = :idUser", nativeQuery = true)
     Bank selectAllBankById(@Param("idUser") long id);
 
-    @Query(value = "INSERT INTO bank (name)values( @name)", nativeQuery = true)
-    Bank insertBank (@Param("name")String name);
+    @Query(value = "createBank @Name= :nameuser ", nativeQuery = true)
+    Bank insertBank (@Param("nameuser")String name);
 
-    @Query(value = "DELETE * FROM bank WHERE id= :id",nativeQuery = true)
-    String deleteBankById(@Param("id") long id);
+    @Query(value = "DELETE FROM bank WHERE id= :id",nativeQuery = true)
+    void deleteBankById(@Param("id") long id);
 
 }

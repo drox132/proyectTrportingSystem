@@ -22,7 +22,7 @@ public class BankController {
         return bankService.selectAllBank();
     }
 
-    @GetMapping("/selectallbankby/{id}")
+    @GetMapping("/selectbankbyid/{id}")
     Bank selectAllBankById(@PathVariable long id){
         return bankService.selectAllBanById(id);
     }
@@ -32,7 +32,7 @@ public class BankController {
         return bankService.insertBank(name);
     }
 
-    @DeleteMapping("/deletebank/{id}")
+    @DeleteMapping("/deletebankbyid/{id}")
     public String deleteBankById(@PathVariable long id) {
          bankService.deleteBankById(id);
         return "The bank has been deleted";
