@@ -33,7 +33,7 @@ public class WorkerServiceImplementation implements WorkerService {
         return workerRepository.insertWorker(
                 newWorker.getName(),newWorker.getCuil(),
                 newWorker.getCbu(),newWorker.getPhone(),
-                newWorker.getStartDate(),newWorker.getIdConsorcio());
+                newWorker.getStartDate(),newWorker.getIdConsorcio(),newWorker.getIdBank());
     }
 
     @Override
@@ -41,7 +41,7 @@ public class WorkerServiceImplementation implements WorkerService {
         return workerRepository.updateWorkerById(
                 updateWorker.getId(),updateWorker.getName(),updateWorker.getCuil(),
                 updateWorker.getCbu(),updateWorker.getPhone(),
-                updateWorker.getStartDate(),updateWorker.getIdConsorcio());
+                updateWorker.getStartDate(),updateWorker.getIdConsorcio(),updateWorker.getIdBank());
     }
 
     @Override

@@ -17,18 +17,23 @@ public interface ConsorcioRepository extends JpaRepository<Consorcio,Integer> {
     Optional<Consorcio> selectAllConsorcioById(@Param("idUser") long id);
 
 
-    //falta configurar bien el esotr procedure CREARlo y agregar la conf en parametros
-    @Query(value = "PROCEDURE", nativeQuery = true)
-    Consorcio insertConsorcio(String name,String cuit,String cbu,String email,long idInspector, int idBank);
+    @Query(value = "exec createConsorcio @Name= :nameuser , @Cuit= :cuituser, @Cbu= :cbuuser," +
+            " @Email= :emailuser , @IdInspector= :idinspectoruser, @IdBank= :idbankuser" , nativeQuery = true)
+    Consorcio insertConsorcio(@Param("nameuser") String name,@Param("cuituser") String cuit,
+                              @Param("cbuuser") String cbu,@Param("emailuser") String email,
+                              @Param("idinspectoruser") long idInspector, @Param("idbankuser") int idBank);
 
 
-    //falta configurar bien el esotr procedure CREARlo y agregar la conf en parametros
-    @Query(value = "PROCEDURE",nativeQuery = true)
-    Consorcio updateConsorcioById(long id, String name, String cuit,
-                                  String cbu,String email,long idInspector,int idBank);
+    @Query(value = "exec updateConsorcio @Name= :nameuser, @Cuit= :cuituser, @Cbu= :cbuuser," +
+            " @Email= :emailuser, @IdInspector= :idinspectoruser, @IdBank= :idbankuser " +
+            " WHERE @Id = :iduser ",nativeQuery = true)
+    Consorcio updateConsorcioById(@Param("iduser") long id, @Param("nameuser") String name,
+                                  @Param("cuituser") String cuit, @Param("cbuuser") String cbu,
+                                  @Param("emailuser") String email, @Param("idinspectoruser") long idInspector,
+                                  @Param("idbankuser") int idBank);
 
 
-    @Query(value = "DELETE * FROM consorcio WHERE id= :id",nativeQuery = true)
+    @Query(value = "DELETE FROM consorcio WHERE id= :id ",nativeQuery = true)
     void deleteConsorcioById(@Param("id") long id);
 
 }

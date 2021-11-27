@@ -134,6 +134,7 @@ CREATE TABLE CONSORCIO(
 -- CREATING WORKER TABLE
 CREATE TABLE WORKER(
                        id INT IDENTITY(1,1),
+
                        name VARCHAR(200) NOT NULL,
                        cuil VARCHAR(100) NOT NULL,
                        cbu VARCHAR(100) NOT NULL,
@@ -148,3 +149,42 @@ CREATE TABLE WORKER(
 )
 
 
+CREATE PROCEDURE updateConsorcio
+    @Id INT,
+    @Name VARCHAR(100),
+    @Cuit VARCHAR(100),
+    @Cbu VARCHAR(100),
+    @Email VARCHAR(100),
+    @IdInspector INT,
+    @IdBank INT
+    AS
+    UPDATE Consorcio SET name=@Name, cuit=@Cuit, cbu=@Cbu, email=@Email, idInspector=@IdInspector, idBank=@IdBank WHERE id=@Id;
+    SELECT * FROM Consorcio WHERE id = @Id
+    GO;
+
+CREATE PROCEDURE updateWorker
+    @Id INT,
+    @Name VARCHAR (100),
+    @Cuil VARCHAR (100),
+    @Cbu VARCHAR (100),
+    @Phone VARCHAR (100),
+    @StartDate DATE ,
+    @IdConsorcio INT,
+    @IdBank  INT
+    AS
+    UPDATE WORKER SET name = @Name , cuil= @Cuil, cbu= @Cbu, phone= @Phone, startDate= @StartDate, idConsorcio= @IdConsorcio, idBank=@IdBank WHERE id= @Id;
+    SELECT * FROM WORKER WHERE id = @Id
+    GO;
+
+
+-- CREATING STORE PROCEDURE UPDATE INSPECTOR BY ID
+CREATE PROCEDURE updateInspectorById
+    @Id INT,
+    @Name VARCHAR(200),
+    @StartDate DATE ,
+    @Phone VARCHAR(200),
+    @Email VARCHAR (200)
+    AS
+UPDATE INSPECTOR SET name = @Name , startDate = @StartDate , phone = @Phone , email = @Email WHERE id = @Id
+SELECT TOP 1 * FROM INSPECTOR WHERE id = @Id
+    GO;
