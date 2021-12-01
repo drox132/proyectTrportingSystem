@@ -38,8 +38,8 @@ public class ConsorcioController {
     }
     @DeleteMapping("/deleteconsorcioby/{id}")
     public String deleteConsorcioById(@PathVariable long id) {
-        consorcioService.deleteConsorcioById(id);
-        return "The consortium has been deleted";
+        return consorcioService.deleteConsorcioById(id);
+
     }
 
 }

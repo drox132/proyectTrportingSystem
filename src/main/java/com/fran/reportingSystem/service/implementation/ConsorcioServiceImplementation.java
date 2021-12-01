@@ -48,8 +48,8 @@ public class ConsorcioServiceImplementation implements ConsorcioService {
     }
 
     @Override
-    public void deleteConsorcioById(long id) {
-         consorcioRepository.deleteConsorcioById(id);
+    public String deleteConsorcioById(long id) {
+         return consorcioRepository.deleteConsorcioById(id);
     }
 
 

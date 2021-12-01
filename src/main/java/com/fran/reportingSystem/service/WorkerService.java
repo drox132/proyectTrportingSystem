@@ -10,5 +10,5 @@ public interface WorkerService {
     Worker selectAllWorkerById(long id);
     Worker insertWorker (Worker newWorker);
     Worker updateWorkerById(Worker uodateWorker);
-    void deleteWorkerByID(long id);
+    String deleteWorkerByID(long id);
 }

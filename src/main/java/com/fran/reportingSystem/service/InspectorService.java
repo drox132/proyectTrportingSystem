@@ -10,7 +10,7 @@ public interface InspectorService {
     Inspector selectAllInspectorById(long id);
     Inspector insertInspector(Inspector newInspector);
     Inspector updateInspectorById(Inspector updateInspector);
-    void deleteInspector (long id);
+    String deleteInspector (long id);
 
 
 }

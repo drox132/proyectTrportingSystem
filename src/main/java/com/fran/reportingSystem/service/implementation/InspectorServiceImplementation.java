@@ -45,7 +45,7 @@ public class InspectorServiceImplementation implements InspectorService {
     }
 
     @Override
-    public void deleteInspector(long id) {
-         inspectorRepository.deleteInspectorById(id);
+    public String deleteInspector(long id) {
+         return inspectorRepository.deleteInspectorById(id);
     }
 }

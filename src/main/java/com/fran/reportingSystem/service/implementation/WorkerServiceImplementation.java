@@ -45,7 +45,7 @@ public class WorkerServiceImplementation implements WorkerService {
     }
 
     @Override
-    public void deleteWorkerByID(long id) {
-         workerRepository.deleteWorkerById(id);
+    public String deleteWorkerByID(long id) {
+         return workerRepository.deleteWorkerById(id);
     }
 }

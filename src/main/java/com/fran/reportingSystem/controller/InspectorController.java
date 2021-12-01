@@ -43,8 +43,8 @@ public class InspectorController {
 
     @DeleteMapping ("/deleteinspectorby/{id}")
     public String delectInspectorById(@PathVariable long id){
-        inspectorService.deleteInspector(id);
-        return "The inspector has been deleted";
+        return inspectorService.deleteInspector(id);
+
     }
 
 

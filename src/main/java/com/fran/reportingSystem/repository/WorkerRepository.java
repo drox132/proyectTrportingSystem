@@ -25,14 +25,14 @@ public interface WorkerRepository extends JpaRepository<Worker,Integer> {
                          @Param("startdateuser") Date startDate,@Param("idconsorciouser") Long idConsorcio,
                          @Param("idbankuser") int idBank);
 
-    @Query(value = "exec updateWorker @Name= :nameuser , @Cuil= :cuiluser ," +
+    @Query(value = "exec updateWorker  @Id= :iduser , @Name= :nameuser , @Cuil= :cuiluser ," +
             " @Cbu= :cbuuser , @Phone= :phoneuser , @StartDate= :startdateuser ," +
-            "@IdConsorcio= :idconsorciouser , @IdBank= :idbankuser WHERE @Id= :iduser", nativeQuery = true)
+            "@IdConsorcio= :idconsorciouser , @IdBank= :idbankuser ", nativeQuery = true)
     Worker updateWorkerById(@Param("iduser") long id,@Param("nameuser") String name, @Param("cuiluser") String cuil,
                             @Param("cbuuser") String cbu, @Param("phoneuser") String phone,
                             @Param("startdateuser") Date startDate, @Param("idconsorciouser") Long idConsorcio,
                             @Param("idbankuser") int idBank);
 
-    @Query(value = "DELETE FROM worker WHERE id= :idusuario", nativeQuery = true)
-    void deleteWorkerById(@Param("idusuario") long id);
+    @Query(value = "exec deleteWorker @Id= :iduser", nativeQuery = true)
+    String deleteWorkerById(@Param("iduser") long id);
 }

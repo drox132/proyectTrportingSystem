@@ -12,7 +12,7 @@ public interface ConsorcioService {
     Consorcio selectAllConsorcioById(long id);
     Consorcio insertConsorcio(Consorcio newConsorcio);
     Consorcio updateConsorcioById(Consorcio updateConsorcio);
-    void deleteConsorcioById(long id);
+    String deleteConsorcioById(long id);
 
 
 

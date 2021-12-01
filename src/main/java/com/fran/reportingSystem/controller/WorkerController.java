@@ -40,7 +40,7 @@ public class WorkerController {
 
     @DeleteMapping("/deleteworkerby/{id}")
     public String deleteWorkerByID(@PathVariable long id) {
-        workerService.deleteWorkerByID(id);
-        return "the worker has been deleted";
+        return workerService.deleteWorkerByID(id);
+
     }
 }

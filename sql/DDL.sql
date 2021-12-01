@@ -188,3 +188,51 @@ CREATE PROCEDURE updateInspectorById
 UPDATE INSPECTOR SET name = @Name , startDate = @StartDate , phone = @Phone , email = @Email WHERE id = @Id
 SELECT TOP 1 * FROM INSPECTOR WHERE id = @Id
     GO;
+
+--CREATE STORE PROCEDURE DELETE WORKER BY ID
+    CREATE PROCEDURE deleteWorker
+    @Id INT
+
+    AS
+
+    DELETE FROM worker WHERE id = @Id
+    SELECT CONCAT ('THE ','WORKER ','HAS ','BEEN ','DELETED')
+
+
+ -- UODATE sTORE PROCEDURE DELETE WORKER BY MS
+    USE [reportingSystem]
+    GO
+    /****** Object:  StoredProcedure [dbo].[deleteWorker]    Script Date: 30/11/2021 22:51:53 ******/
+    SET ANSI_NULLS ON
+    GO
+    SET QUOTED_IDENTIFIER ON
+    GO
+    ALTER PROCEDURE [dbo].[deleteWorker]
+    @Id INT
+    AS
+    DELETE FROM worker WHERE id = @Id
+    SELECT CONCAT ('THE ','WORKER ','HAS ','BEEN ','DELETED ')
+
+
+
+
+--CREATE STORE PROCEDURE DELETE inspector BY ID
+
+CREATE PROCEDURE deleteInspector
+    @Id INT
+
+    AS
+
+    DELETE FROM worker WHERE id = @Id
+    SELECT CONCAT ('THE ','INSPECTOR ','HAS ','BEEN ','DELETED')
+
+
+
+--CREATE STORE PROCEDURE DELETE consorcio BY ID
+CREATE PROCEDURE deleteConsorcio
+    @Id INT
+
+    AS
+
+    DELETE FROM worker WHERE id = @Id
+    SELECT CONCAT ('THE ','CONSORTIUM ','HAS ','BEEN ','DELETED')

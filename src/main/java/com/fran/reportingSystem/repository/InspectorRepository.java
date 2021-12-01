@@ -25,8 +25,8 @@ public interface InspectorRepository extends JpaRepository<Inspector,Integer> {
     @Query(value = "updateInspectorById @Id= :iduser , @Name= :nameuser , @StartDate= :startdateuser , @Phone= :phoneuser , @Email= :emailuser ", nativeQuery = true)
     Inspector updateInspectorById(@Param("iduser") long id, @Param("nameuser") String name, @Param("startdateuser") Date startDate, @Param("phoneuser") String phone, @Param("emailuser") String email);
 
-    @Query(value = "DELETE FROM inspector WHERE id= :idusuario", nativeQuery = true)
-    void deleteInspectorById(@Param("idusuario") long id);
+    @Query(value = "exec deleteInspector @Id= :iduser", nativeQuery = true)
+    String deleteInspectorById(@Param("iduser") long id);
 
 
 }
